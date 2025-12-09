@@ -2,6 +2,18 @@
 
 All notable changes to PersonalityBot will be documented in this file.
 
+## [1.0.1] - 2025-12-09
+
+### Fixed
+- Updated LangChain dependencies to version 0.3+ for better Python 3.14 compatibility
+- Added explicit pydantic>=2.0.0 dependency to avoid Pydantic V1 compatibility issues
+- Added langchain-core>=0.3.0 to requirements for proper dependency resolution
+
+### Documentation
+- Added Python version compatibility notes (3.11-3.13 recommended, 3.14+ requires updated packages)
+- Added troubleshooting section for Python 3.14+ import errors in README and QUICKSTART
+- Documented workarounds for users on Python 3.14 or later
+
 ## [1.0.0] - 2025-12-09
 
 ### Initial Release

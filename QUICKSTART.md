@@ -8,7 +8,9 @@ Before you begin, make sure you have:
 
 1. **Twitter Developer Account** - Apply at [developer.twitter.com](https://developer.twitter.com)
 2. **OpenAI API Key** - Get one at [platform.openai.com](https://platform.openai.com)
-3. **Docker & Docker Compose** (recommended) OR **Python 3.11+**
+3. **Docker & Docker Compose** (recommended) OR **Python 3.11-3.13**
+
+**Python Version Note:** If using Python 3.14 or later, ensure you install the latest LangChain packages (0.3+) for compatibility.
 
 ## Step-by-Step Setup
 
@@ -145,6 +147,25 @@ Make responses more creative (higher) or more consistent (lower):
 ```
 
 ## Troubleshooting
+
+### Python 3.14+ Import Errors
+
+If you see errors like `Pydantic V1 functionality isn't compatible with Python 3.14`:
+
+**Solution 1 (Recommended):** Use Python 3.11-3.13
+```bash
+# On macOS with Homebrew
+brew install python@3.13
+python3.13 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
+
+**Solution 2:** Update to latest packages
+```bash
+pip install --upgrade langchain langchain-openai langchain-core pydantic
+```
 
 ### Bot Not Responding
 

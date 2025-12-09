@@ -27,10 +27,12 @@ The bot consists of several modular components:
 
 ## Prerequisites
 
-- Python 3.11+
+- Python 3.11-3.13 (Python 3.14+ requires updated LangChain dependencies)
 - Docker and Docker Compose (for containerized deployment)
 - Twitter Developer Account with API credentials
 - OpenAI API key
+
+**Note:** If you're using Python 3.14 or later, you may need to install the latest versions of LangChain packages. The requirements have been updated to use LangChain 0.3+ which has better Python 3.14 compatibility.
 
 ## Setup
 
@@ -200,6 +202,22 @@ docker-compose logs -f
 - Use environment variables for all sensitive configuration
 
 ## Troubleshooting
+
+### Python 3.14+ Compatibility Issues
+
+If you encounter errors like `Pydantic V1 functionality isn't compatible with Python 3.14 or greater`:
+
+```bash
+# Solution 1: Use Python 3.11-3.13 (recommended)
+python3.13 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# Solution 2: Update to latest LangChain versions
+pip install --upgrade langchain langchain-openai langchain-core pydantic
+```
+
+The updated requirements.txt includes LangChain 0.3+ which has better Python 3.14 compatibility.
 
 ### Bot not responding to mentions
 
