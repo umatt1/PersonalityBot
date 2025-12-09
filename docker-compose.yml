@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  personality-bot:
+    build: .
+    container_name: personality-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persist memory data
+      - ./memory_data:/app/memory_data
+      # Mount config for easy updates
+      - ./config.json:/app/config.json:ro
+      # Mount logs
+      - ./logs:/app/logs
+    environment:
+      - CONFIG_PATH=config.json
+      - LOG_LEVEL=INFO
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
