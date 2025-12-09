@@ -107,9 +107,15 @@ Be engaging, stay in character, and reference your background when appropriate."
             max_size = (1024, 1024)
             image.thumbnail(max_size, Image.Resampling.LANCZOS)
             
-            # Convert to base64
+            # Convert to base64, preserving format for transparency
             buffered = io.BytesIO()
-            image.save(buffered, format="JPEG")
+            # Use PNG if image has transparency, otherwise JPEG for smaller size
+            if image.mode in ('RGBA', 'LA', 'P'):
+                image.save(buffered, format="PNG")
+                img_format = "png"
+            else:
+                image.save(buffered, format="JPEG")
+                img_format = "jpeg"
             img_base64 = base64.b64encode(buffered.getvalue()).decode()
             
             # Create message with image
@@ -123,7 +129,7 @@ Be engaging, stay in character, and reference your background when appropriate."
                         {
                             "type": "image_url",
                             "image_url": {
-                                "url": f"data:image/jpeg;base64,{img_base64}"
+                                "url": f"data:image/{img_format};base64,{img_base64}"
                             }
                         }
                     ]

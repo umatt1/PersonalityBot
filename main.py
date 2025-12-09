@@ -62,7 +62,9 @@ class PersonalityBot:
         self.hour_start: datetime = datetime.now()
         self.follows_today: int = 0
         self.day_start: datetime = datetime.now()
+        # Use a limited-size set to track processed tweets (keep last 1000)
         self.processed_tweet_ids: Set[str] = set()
+        self.max_processed_ids: int = 1000
         
         logger.info("Bot initialized successfully")
     
@@ -126,6 +128,11 @@ class PersonalityBot:
             try:
                 self._process_mention(mention)
                 self.processed_tweet_ids.add(mention['id'])
+                
+                # Limit size of processed_tweet_ids to prevent memory growth
+                if len(self.processed_tweet_ids) > self.max_processed_ids:
+                    # Remove oldest entries (keep most recent max_processed_ids)
+                    self.processed_tweet_ids = set(list(self.processed_tweet_ids)[-self.max_processed_ids:])
             except Exception as e:
                 logger.error(f"Error processing mention {mention['id']}: {e}")
     
