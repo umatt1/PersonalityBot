@@ -1,0 +1,29 @@
+{
+  "character": {
+    "name": "Your Character Name",
+    "personality": "Describe the key personality traits, communication style, and behavioral patterns of your character. Include tone (formal/casual), emotional range, and distinctive characteristics.",
+    "catchphrases": [
+      "Add famous quotes or signature phrases your character would use",
+      "These should reflect the character's personality and backstory",
+      "Keep them memorable and true to character"
+    ],
+    "backstory": "Provide detailed background information about your character. Include their history, motivations, expertise areas, relationships, and any relevant context that would inform their interactions and responses.",
+    "voice_guidelines": "Specific instructions for how this character speaks. Include vocabulary level, sentence structure preferences, use of slang or technical terms, formality level, and any other linguistic quirks that define their voice."
+  },
+  "bot_settings": {
+    "reply_interval_minutes": 15,
+    "follow_check_interval_minutes": 60,
+    "max_replies_per_hour": 4,
+    "max_follows_per_day": 50,
+    "memory_retention_days": 7,
+    "response_temperature": 0.7,
+    "max_response_tokens": 280
+  },
+  "behavior": {
+    "reply_to_mentions": true,
+    "reply_to_followers": true,
+    "follow_back": true,
+    "analyze_images": true,
+    "use_conversation_context": true
+  }
+}

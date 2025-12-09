@@ -2,6 +2,8 @@
 
 A Dockerized Python Twitter bot that runs continuously, interacting with users in a configurable character's voice. The bot uses LangChain and OpenAI's LLM to analyze content (including images), maintain conversation memory, and generate character-appropriate responses.
 
+> **🚀 New to PersonalityBot?** Check out the [Quick Start Guide](QUICKSTART.md) for a step-by-step setup tutorial!
+
 ## Features
 
 - **Character-Based Responses**: Configurable personality, catchphrases, and backstory
